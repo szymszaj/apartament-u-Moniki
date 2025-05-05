@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, BookOpen, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { footerLinks } from "./links/links";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoverPosition, setHoverPosition] = useState<number | null>(null);
+  const [hoverWidth, setHoverWidth] = useState<number>(0);
+  const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -14,10 +18,25 @@ const Navigation = () => {
     return location.pathname === path;
   };
 
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.currentTarget;
+    const rect = target.getBoundingClientRect();
+    const navRect = navRef.current?.getBoundingClientRect();
+
+    if (navRect) {
+      setHoverPosition(rect.left - navRect.left);
+      setHoverWidth(rect.width);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoverPosition(null);
+  };
+
   return (
     <header className="sticky top-0 w-full bg-beige-light/80 backdrop-blur-sm z-50 shadow-sm">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="text-2xl font-semibold tracking-tight">
+        <Link to="/" className="text-2xl font-semibold tracking-tight z-10">
           Luksusowy Apartament
         </Link>
 
@@ -34,60 +53,82 @@ const Navigation = () => {
           )}
         </Button>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            className={cn(
-              "text-muted-foreground hover:text-foreground transition-colors",
-              isActivePath("/") && "text-foreground font-medium"
+        <div
+          ref={navRef}
+          className="hidden md:block relative"
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="absolute inset-0 bg-beige-dark/0 transition-all duration-300 rounded-full -z-10 group-hover:bg-beige-dark/80">
+            {hoverPosition !== null && (
+              <div
+                className="absolute top-1/2 -translate-y-1/2 h-10 bg-white rounded-full shadow-md transition-all duration-200 ease-out"
+                style={{
+                  left: `${hoverPosition}px`,
+                  width: `${hoverWidth}px`,
+                }}
+              />
             )}
-          >
-            Strona główna
-          </Link>
-          <Link
-            to="/gallery"
-            className={cn(
-              "text-muted-foreground hover:text-foreground transition-colors",
-              isActivePath("/gallery") && "text-foreground font-medium"
-            )}
-          >
-            Galeria
-          </Link>
-          <Link
-            to="/contact"
-            className={cn(
-              "text-muted-foreground hover:text-foreground transition-colors",
-              isActivePath("/contact") && "text-foreground font-medium"
-            )}
-          >
-            Kontakt
-          </Link>
-
-          <div className="flex items-center gap-2 ml-4">
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-beige text-muted-foreground hover:text-foreground transition-all"
-            >
-              <Instagram size={20} />
-            </a>
-            <a
-              href="https://www.booking.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-beige text-muted-foreground hover:text-foreground transition-all"
-            >
-              <BookOpen size={20} />
-            </a>
           </div>
-        </nav>
+
+          <nav className="flex items-center gap-6 px-4 py-2 rounded-full group">
+            <Link
+              to="/"
+              className={cn(
+                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
+                isActivePath("/") && "text-foreground font-medium"
+              )}
+              onMouseEnter={handleMouseEnter}
+            >
+              Strona główna
+            </Link>
+            <Link
+              to="/gallery"
+              className={cn(
+                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
+                isActivePath("/gallery") && "text-foreground font-medium"
+              )}
+              onMouseEnter={handleMouseEnter}
+            >
+              Galeria
+            </Link>
+            <Link
+              to="/contact"
+              className={cn(
+                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
+                isActivePath("/contact") && "text-foreground font-medium"
+              )}
+              onMouseEnter={handleMouseEnter}
+            >
+              Kontakt
+            </Link>
+
+            <div className="flex items-center gap-2 ml-4">
+              <a
+                href={footerLinks.social.instagram.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:text-foreground transition-all relative z-10"
+                onMouseEnter={handleMouseEnter}
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href={footerLinks.social.booking.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:text-foreground transition-all relative z-10"
+                onMouseEnter={handleMouseEnter}
+              >
+                <BookOpen size={20} />
+              </a>
+            </div>
+          </nav>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-beige-light z-40 animate-fade-in">
-          <nav className="flex flex-col p-6 space-y-6">
+        <div className="md:hidden fixed inset-0 top-16 bg-beige-light z-40 animate-fade-in ">
+          <nav className="flex flex-col p-6 space-y-6 bg-beige-light z-[100]">
             <Link
               to="/"
               className={cn("text-xl py-2", isActivePath("/") && "font-medium")}
@@ -118,7 +159,7 @@ const Navigation = () => {
 
             <div className="flex items-center gap-4 pt-4">
               <a
-                href="https://www.instagram.com"
+                href={footerLinks.social.instagram.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-beige rounded-full"
@@ -126,7 +167,7 @@ const Navigation = () => {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://www.booking.com"
+                href={footerLinks.social.booking.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-beige rounded-full"

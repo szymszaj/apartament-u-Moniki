@@ -5,19 +5,18 @@ import "leaflet/dist/leaflet.css";
 
 const LocationMap = () => {
   const mapRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (mapRef.current) {
-      const map = L.map(mapRef.current).setView([49.2992, 19.9496], 15);
+      const map = L.map(mapRef.current).setView([49.4292, 20.02619], 17);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker([49.2992, 19.9496])
+      L.marker([49.4292, 20.02619])
         .addTo(map)
-        .bindPopup("Zakopane - centrum")
+        .bindPopup("tu jesteśmy!")
         .openPopup();
     }
   }, []);
@@ -41,7 +40,7 @@ const LocationMap = () => {
                 <div>
                   <h3 className="font-semibold text-lg">Adres</h3>
                   <p className="text-muted-foreground">
-                    ul. Krupówki 1, 34-500 Zakopane
+                    Augustyna Suskiego 45F, 34-424 Szaflary
                   </p>
                 </div>
               </div>
@@ -52,19 +51,19 @@ const LocationMap = () => {
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>2 min do Krupówek</span>
+                  <span>10 min do centrum Nowego Targu</span>
                 </li>
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>10 min do kolejki na Gubałówkę</span>
+                  <span>25 min do centrum Zakopanego</span>
                 </li>
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>15 min do Wielkiej Krokwi</span>
+                  <span>5 min do Term</span>
                 </li>
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>30 min do Morskiego Oka (samochodem)</span>
+                  <span>2 min do pobliskiego sklepu</span>
                 </li>
               </ul>
             </div>

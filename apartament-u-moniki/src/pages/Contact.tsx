@@ -1,45 +1,45 @@
-
-import { useState } from 'react';
-import { toast } from "sonner";
-import { Mail, Phone, MapPin, Send, Instagram, BookOpen } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { useState } from "react";
+import { Phone, MapPin, Send, Instagram, BookOpen, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { footerLinks } from "@/components/links/links";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+    name: "",
+    phone: "",
+    message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Wiadomość została wysłana", {
-        description: "Dziękujemy za wiadomość. Skontaktujemy się z Tobą wkrótce.",
-      });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      });
-      setIsSubmitting(false);
-    }, 1500);
+
+    const subject = `Wiadomość od ${formData.name}`;
+    const body =
+      `Imię: ${formData.name}%0D%0A` +
+      `Numer telefonu: ${formData.phone}%0D%0A%0D%0A` +
+      `Wiadomość:%0D%0A${formData.message}`;
+    const mailtoLink = `mailto:${
+      footerLinks.contact.email.label
+    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    setFormData({
+      name: "",
+      phone: "",
+      message: "",
+    });
   };
 
   return (
@@ -50,40 +50,25 @@ const Contact = () => {
         <div className="container">
           <h1 className="text-3xl font-bold mb-2">Kontakt</h1>
           <p className="text-muted-foreground mb-10">
-            Masz pytania? Skontaktuj się z nami bezpośrednio lub skorzystaj z formularza kontaktowego.
+            Masz pytania? Skontaktuj się z nami bezpośrednio lub skorzystaj z
+            formularza kontaktowego.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-medium">
-                      Imię i nazwisko *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-beige-light"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-medium">
-                      Email *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-beige-light"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label htmlFor="name" className="block text-sm font-medium">
+                    Imię i nazwisko *
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="bg-beige-light"
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -101,7 +86,10 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-medium">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium"
+                  >
                     Wiadomość *
                   </label>
                   <Textarea
@@ -115,32 +103,29 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Wysyłanie..."
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2" /> Wyślij wiadomość
-                    </>
-                  )}
+                <Button type="submit" className="w-full">
+                  <>
+                    <Send className="h-4 w-4 mr-2" /> Wyślij wiadomość
+                  </>
                 </Button>
               </form>
             </div>
 
             <div className="space-y-8">
               <div className="bg-beige p-6 rounded-lg">
-                <h2 className="text-xl font-semibold mb-4">Informacje kontaktowe</h2>
+                <h2 className="text-xl font-semibold mb-4">
+                  Informacje kontaktowe
+                </h2>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <Mail className="h-5 w-5 mr-3 text-primary mt-1" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <a href="mailto:info@apartament.pl" className="text-muted-foreground hover:text-primary transition-colors">
-                        info@apartament.pl
+                      <a
+                        href={`mailto:${footerLinks.contact.email.label}`}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {footerLinks.contact.email.label}
                       </a>
                     </div>
                   </div>
@@ -148,8 +133,11 @@ const Contact = () => {
                     <Phone className="h-5 w-5 mr-3 text-primary mt-1" />
                     <div>
                       <p className="font-medium">Telefon</p>
-                      <a href="tel:+48123456789" className="text-muted-foreground hover:text-primary transition-colors">
-                        +48 123 456 789
+                      <a
+                        href={footerLinks.contact.phone.href}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {footerLinks.contact.phone.label}
                       </a>
                     </div>
                   </div>
@@ -157,30 +145,34 @@ const Contact = () => {
                     <MapPin className="h-5 w-5 mr-3 text-primary mt-1" />
                     <div>
                       <p className="font-medium">Adres</p>
-                      <p className="text-muted-foreground">ul. Przykładowa 123, 00-001 Warszawa</p>
+                      <p className="text-muted-foreground">
+                        {footerLinks.contact.address}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-beige p-6 rounded-lg">
-                <h2 className="text-xl font-semibold mb-4">Social media i rezerwacje</h2>
+                <h2 className="text-xl font-semibold mb-4">
+                  Social media i rezerwacje
+                </h2>
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Instagram className="h-5 w-5 mr-3 text-primary" />
                     <a
-                      href="https://www.instagram.com"
+                      href={footerLinks.social.instagram.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      @luksusowy_apartament
+                      Apartament u Moniki
                     </a>
                   </div>
                   <div className="flex items-center">
                     <BookOpen className="h-5 w-5 mr-3 text-primary" />
                     <a
-                      href="https://www.booking.com"
+                      href={footerLinks.social.booking.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
@@ -192,7 +184,9 @@ const Contact = () => {
               </div>
 
               <div className="p-6 rounded-lg border border-beige-dark/20">
-                <h2 className="text-xl font-semibold mb-4">Godziny odpowiedzi</h2>
+                <h2 className="text-xl font-semibold mb-4">
+                  Godziny odpowiedzi
+                </h2>
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Poniedziałek - Piątek:</span>
