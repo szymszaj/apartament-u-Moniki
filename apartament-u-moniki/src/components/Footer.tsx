@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-beige py-12 border-t border-beige-dark/30">
       <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Apartamen u Moniki</h3>
+          <h3 className="text-lg font-semibold">Apartament u Moniki</h3>
           <p className="text-muted-foreground">
             Komfortowy i elegancki apartament, idealny na krótki lub długi pobyt
             w naszym pięknym Podhalu.
