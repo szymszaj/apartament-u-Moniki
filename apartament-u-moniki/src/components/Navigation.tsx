@@ -37,7 +37,7 @@ const Navigation = () => {
     <header className="sticky top-0 w-full bg-beige-light/80 backdrop-blur-sm z-50 shadow-sm">
       <div className="container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="text-2xl font-semibold tracking-tight z-10">
-          Apartamen u Moniki
+          Apartament u Moniki
         </Link>
 
         <Button

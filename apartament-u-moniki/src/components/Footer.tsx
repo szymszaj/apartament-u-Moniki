@@ -81,7 +81,7 @@ const Footer = () => {
       </div>
 
       <div className="container mt-12 pt-6 border-t border-beige-dark/10 text-center text-muted-foreground text-sm">
-        &copy; {currentYear} Apartamen u Moniki. Wszelkie prawa zastrzeżone.
+        &copy; {currentYear} Apartament u Moniki. Wszelkie prawa zastrzeżone.
       </div>
     </footer>
   );

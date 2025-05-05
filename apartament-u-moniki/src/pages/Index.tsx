@@ -31,7 +31,7 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="max-w-2xl space-y-6 animate-slide-down">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Apartamen u Moniki
+              Apartament u Moniki
             </h1>
             <p className="text-xl text-muted-foreground">
               Komfortowe miejsce do wypoczynku, które sprawi, że Twój pobyt
