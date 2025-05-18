@@ -26,10 +26,6 @@ const LocationMap = () => {
       <div className="container">
         <div className="text-center mb-12 space-y-3">
           <h2 className="text-3xl font-bold">Lokalizacja</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Nasz apartament znajduje się w sercu Zakopanego, blisko Krupówek i
-            szlaków turystycznych.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -51,19 +47,15 @@ const LocationMap = () => {
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>10 min do centrum Nowego Targu</span>
+                  <span>Nowy Targ - 7 km. </span>
                 </li>
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>25 min do centrum Zakopanego</span>
+                  <span>Zakopane - 17 km.</span>
                 </li>
                 <li className="flex items-center">
                   <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>5 min do Term</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 rounded-full bg-primary mr-2"></span>
-                  <span>2 min do pobliskiego sklepu</span>
+                  <span>Termy Gorący Potok - 3,5 km.</span>
                 </li>
               </ul>
             </div>

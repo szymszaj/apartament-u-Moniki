@@ -180,25 +180,14 @@ const Contact = () => {
                       Rezerwuj przez Booking.com
                     </a>
                   </div>
-                </div>
-              </div>
-
-              <div className="p-6 rounded-lg border border-beige-dark/20">
-                <h2 className="text-xl font-semibold mb-4">
-                  Godziny odpowiedzi
-                </h2>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span>Poniedziałek - Piątek:</span>
-                    <span>09:00 - 20:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sobota:</span>
-                    <span>10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Niedziela:</span>
-                    <span>10:00 - 16:00</span>
+                  <div className="flex items-center">
+                    <Phone className="h-5 w-5 mr-3 text-primary" />
+                    <a
+                      href={footerLinks.contact.phone.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Zadzwoń bezpośrednio: {footerLinks.contact.phone.label}
+                    </a>
                   </div>
                 </div>
               </div>

@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Apartament u Moniki</h3>
           <p className="text-muted-foreground">
-            Komfortowy i elegancki apartament, idealny na krótki lub długi pobyt
-            w naszym pięknym Podhalu.
+            Komfortowy apartament, idealny zarówno na krótkie, jak i długie
+            pobyty.
           </p>
           <div className="flex space-x-4 pt-2">
             <a
