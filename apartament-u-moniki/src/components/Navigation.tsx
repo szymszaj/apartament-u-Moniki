@@ -92,10 +92,10 @@ const Navigation = () => {
               Galeria
             </Link>
             <Link
-              to="/opis"
+              to="/Description"
               className={cn(
                 "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
-                isActivePath("/opis") && "text-foreground font-medium"
+                isActivePath("/Description") && "text-foreground font-medium"
               )}
               onMouseEnter={handleMouseEnter}
             >

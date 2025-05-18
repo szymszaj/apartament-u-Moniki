@@ -119,7 +119,7 @@ const attractions = [
   },
 ];
 
-const Opis = () => {
+const Description = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -265,4 +265,4 @@ const Opis = () => {
   );
 };
 
-export default Opis;
+export default Description;

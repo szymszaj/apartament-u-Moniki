@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import Opis from "./pages/description";
+import Description from "./pages/description";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -20,8 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/opis" element={<Opis />} /> {/* DODANA NOWA SEKCJA */}
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/description" element={<Description />} />{" "}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
