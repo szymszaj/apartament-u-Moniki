@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import Description from "./pages/description";
+import Description from "./pages/Description";
 const queryClient = new QueryClient();
 
 const App = () => (
