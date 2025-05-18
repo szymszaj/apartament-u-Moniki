@@ -92,7 +92,7 @@ const Index = () => {
             </div>
             <div className="bg-beige p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-xl font-semibold mb-3">
-                Komfortowe Przestrzenie
+                Przyjazny dla Rodzin
               </h3>
               <p className="text-muted-foreground">
                 Przestronne pokoje, wygodne łóżka i eleganckie meble zapewniają
@@ -124,14 +124,14 @@ const Index = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              "Wi-Fi",
+              "Bezpłatne Wi-Fi",
               "Telewizor",
-              "Suszarka",
-              "Żelazko",
-              "Kuchnia",
-              "Łazienka",
-              "Parking",
+              "Aneks kuchenny",
               "Lodówka",
+              "Łazienka z prysznicem  ",
+              "Suszarka ",
+              "Ogród z miejscem na grilla  ",
+              "Parking",
             ].map((item, index) => (
               <div
                 key={index}

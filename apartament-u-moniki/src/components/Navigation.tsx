@@ -92,6 +92,16 @@ const Navigation = () => {
               Galeria
             </Link>
             <Link
+              to="/opis"
+              className={cn(
+                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
+                isActivePath("/opis") && "text-foreground font-medium"
+              )}
+              onMouseEnter={handleMouseEnter}
+            >
+              Opis
+            </Link>
+            <Link
               to="/contact"
               className={cn(
                 "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
@@ -145,6 +155,16 @@ const Navigation = () => {
               onClick={toggleMenu}
             >
               Galeria
+            </Link>
+            <Link
+              to="/opis"
+              className={cn(
+                "text-xl py-2",
+                isActivePath("/opis") && "font-medium"
+              )}
+              onClick={toggleMenu}
+            >
+              Opis
             </Link>
             <Link
               to="/contact"
