@@ -3,6 +3,7 @@ export const footerLinks = {
     { to: "/", label: "Strona główna" },
     { to: "/gallery", label: "Galeria" },
     { to: "/contact", label: "Kontakt" },
+    { to: "/Description", label: "Opis" },
   ],
   contact: {
     email: {

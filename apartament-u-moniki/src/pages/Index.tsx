@@ -145,7 +145,7 @@ const Index = () => {
 
           <div className="mt-12 text-center">
             <Button asChild>
-              <Link to="/gallery">Zobacz więcej zdjęć</Link>
+              <Link to="/gallery">Zobacz więcej</Link>
             </Button>
           </div>
         </div>
