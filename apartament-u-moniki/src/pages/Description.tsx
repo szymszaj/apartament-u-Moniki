@@ -196,8 +196,8 @@ const Description = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 text-muted-foreground text-sm">
-                  <PawPrint className="inline h-5 w-5 mr-1 text-primary" />{" "}
+                <div className="mt-4 text-primary">
+                  <PawPrint className="inline h-6 w-6 mr-1 text-primary" />
                   Obiekt przyjazny zwierzętom!
                 </div>
               </div>
