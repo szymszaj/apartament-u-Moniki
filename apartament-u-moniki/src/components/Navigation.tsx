@@ -157,10 +157,10 @@ const Navigation = () => {
               Galeria
             </Link>
             <Link
-              to="/opis"
+              to="/Description"
               className={cn(
                 "text-xl py-2",
-                isActivePath("/opis") && "font-medium"
+                isActivePath("/Description") && "font-medium"
               )}
               onClick={toggleMenu}
             >
