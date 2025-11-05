@@ -202,7 +202,7 @@ const Description = () => {
                 </div>
               </div>
               <img
-                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/590368591.jpg?k=0bfd69e18cca7f888efdf570cd416402ace62b26dd32336fb14fde9ead1746cd&o=&hp=1"
+                src="/img/ogrod4.jpg"
                 alt="Ogród"
                 className="md:w-1/2 w-full rounded-2xl shadow-lg object-cover h-[270px]"
               />
