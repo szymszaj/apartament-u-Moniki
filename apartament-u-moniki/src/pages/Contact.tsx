@@ -1,11 +1,21 @@
-import { useState } from "react";
-import { Phone, MapPin, Send, Instagram, BookOpen, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  Phone,
+  MapPin,
+  Send,
+  Instagram,
+  BookOpen,
+  Mail,
+  Loader2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { footerLinks } from "@/components/links/links";
+import { initEmailJS, sendEmail } from "@/lib/emailjs";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +23,11 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,25 +36,45 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    const subject = `Wiadomość od ${formData.name}`;
-    const body =
-      `Imię: ${formData.name}%0D%0A` +
-      `Numer telefonu: ${formData.phone}%0D%0A%0D%0A` +
-      `Wiadomość:%0D%0A${formData.message}`;
-    const mailtoLink = `mailto:${
-      footerLinks.contact.email.label
-    }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      await sendEmail({
+        name: formData.name,
+        phone: formData.phone,
+        message: formData.message,
+      });
 
-    window.location.href = mailtoLink;
+      toast.success("Wiadomość została wysłana pomyślnie!");
 
-    setFormData({
-      name: "",
-      phone: "",
-      message: "",
-    });
+      setFormData({
+        name: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Błąd wysyłania:", error);
+      toast.error(
+        "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub skontaktuj się bezpośrednio."
+      );
+
+      const subject = `Wiadomość od ${formData.name}`;
+      const body =
+        `Imię: ${formData.name}%0D%0A` +
+        `Numer telefonu: ${formData.phone}%0D%0A%0D%0A` +
+        `Wiadomość:%0D%0A${formData.message}`;
+      const mailtoLink = `mailto:${
+        footerLinks.contact.email.label
+      }?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+        body
+      )}`;
+
+      window.location.href = mailtoLink;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -103,10 +138,18 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full">
-                  <>
-                    <Send className="h-4 w-4 mr-2" /> Wyślij wiadomość
-                  </>
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Wysyłanie...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4 mr-2" />
+                      Wyślij wiadomość
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
