@@ -132,6 +132,7 @@ const Index = () => {
               "Suszarka ",
               "Ogród z miejscem na grilla  ",
               "Parking",
+              "Jacuzzi/Balia z hydromasażem",
             ].map((item, index) => (
               <div
                 key={index}

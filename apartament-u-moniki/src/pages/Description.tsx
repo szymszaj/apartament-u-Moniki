@@ -220,7 +220,7 @@ const Description = () => {
             <div className="inline-block px-8 py-4 rounded-2xl bg-beige-light shadow">
               <p>
                 <span className="font-bold">Doba hotelowa: </span>
-                <span className="text-primary">14:00 – 10:00</span>
+                <span className="text-primary">15:00 – 10:00</span>
               </p>
               <p className="text-muted-foreground text-xs mt-1">
                 Zameldowanie i wymeldowanie zgodnie z Twoim planem podróży.
