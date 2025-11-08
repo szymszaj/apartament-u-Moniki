@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, BookOpen, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,8 +9,36 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoverPosition, setHoverPosition] = useState<number | null>(null);
   const [hoverWidth, setHoverWidth] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -34,7 +62,12 @@ const Navigation = () => {
   };
 
   return (
-    <header className="sticky top-0 w-full bg-beige-light/80 backdrop-blur-sm z-50 shadow-sm">
+    <header
+      className={cn(
+        "fixed top-0 w-full bg-beige-light/80 backdrop-blur-sm z-50 shadow-sm transition-transform duration-300 ease-in-out",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="text-2xl font-semibold tracking-tight z-10">
           Apartament u Moniki

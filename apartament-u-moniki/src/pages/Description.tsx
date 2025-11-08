@@ -79,6 +79,10 @@ const gardenFun = [
     icon: <Check className="h-6 w-6 text-primary" />,
     label: "Siatka do badmintona",
   },
+  {
+    icon: <Waves className="h-6 w-6 text-primary" />,
+    label: "Jacuzzi ogrodowe/balia",
+  },
 ];
 
 const attractions = [
@@ -202,7 +206,7 @@ const Description = () => {
                 </div>
               </div>
               <img
-                src="/img/ogrod4.jpg"
+                src="/img/jacuzzi.jpg"
                 alt="Ogród"
                 className="md:w-1/2 w-full rounded-2xl shadow-lg object-cover h-[270px]"
               />
