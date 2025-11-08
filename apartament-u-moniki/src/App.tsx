@@ -8,6 +8,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Description from "./pages/Description";
+import ChatBot from "./components/ChatBot";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -20,9 +21,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/description" element={<Description />} />{" "}
+          <Route path="/description" element={<Description />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <div className="hidden md:block">
+          <ChatBot />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
