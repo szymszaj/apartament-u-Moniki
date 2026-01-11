@@ -8,6 +8,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Description from "./pages/Description";
+import FloatingContactButton from "./components/FloatingContactButton";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <FloatingContactButton />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/gallery" element={<Gallery />} />
