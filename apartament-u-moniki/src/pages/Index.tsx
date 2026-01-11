@@ -1,4 +1,3 @@
-import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -6,65 +5,14 @@ import Footer from "@/components/Footer";
 import AnimatedBlocks from "@/components/AnimatedBlocks";
 import LocationMap from "@/components/LocationMap";
 import { footerLinks } from "@/components/links/links";
+import HeroSlider from "@/components/HeroSlider/HeroSlider";
 
 const Index = () => {
-  const scrollToFeatures = () => {
-    const featuresSection = document.getElementById("features");
-    if (featuresSection) {
-      featuresSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/628159546.jpg?k=c98b642e5eea6d09282a179664f7bffc61e821346f4f154352344727ef56eca6&o=&hp=1"
-            className="w-full h-full object-cover object-center hero-img-mask"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-beige-light/90 to-beige-light/30"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <div className="max-w-2xl space-y-6 animate-slide-down">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Apartament u Moniki
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Komfortowe miejsce do wypoczynku, które sprawi, że Twój pobyt
-              będzie niezapomniany.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg">
-                <Link to="/gallery">Zobacz Galerię</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a
-                  href={footerLinks.social.booking.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Rezerwuj Teraz
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <Button
-            onClick={scrollToFeatures}
-            variant="ghost"
-            size="icon"
-            className="rounded-full bg-beige-light/50 backdrop-blur-sm hover:bg-beige-light"
-          >
-            <ArrowDown />
-          </Button>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section id="features" className="py-16 bg-beige-light">
         <div className="container">
