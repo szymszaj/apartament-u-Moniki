@@ -130,7 +130,7 @@ const Description = () => {
 
       <main className="flex-1 bg-gradient-to-br from-beige-light to-beige py-10">
         <div className="container max-w-5xl">
-          <div className="mb-12 text-center animate-slide-down">
+          <div className="mb-6 text-center mt-16 animate-slide-down">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Poznaj Apartament i Okolicę
             </h1>

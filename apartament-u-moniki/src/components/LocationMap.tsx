@@ -61,10 +61,17 @@ const LocationMap = () => {
             </div>
           </div>
 
-          <div
-            ref={mapRef}
-            className="h-[400px] bg-beige border border-beige-dark/20 rounded-lg overflow-hidden shadow-md"
-          ></div>
+          <a
+            href={import.meta.env.VITE_GOOGLE_MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-[400px] bg-beige border border-beige-dark/20 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              ref={mapRef}
+              className="h-full w-full pointer-events-none"
+            ></div>
+          </a>
         </div>
       </div>
     </section>
