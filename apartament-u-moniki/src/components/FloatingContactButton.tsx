@@ -15,7 +15,7 @@ const FloatingContactButton = () => {
 
   return (
     <>
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[9999] floating-contact-btn transition-opacity duration-300">
+      <div className="fixed bottom-6 right-6 md:top-1/2 md:right-6 md:-translate-y-1/2 z-[9999] floating-contact-btn transition-opacity duration-300">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button
