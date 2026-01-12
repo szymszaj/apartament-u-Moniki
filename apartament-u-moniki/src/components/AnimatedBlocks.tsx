@@ -5,7 +5,7 @@ const AnimatedBlocks = () => {
 
   const imageSources = [
     "/img/kuchnia.jpg",
-    "/img/ogrod4.jpg",
+    "/img/jacuzzi3.jpg",
     "/img/salon.jpg",
     "/img/salon2.jpg",
   ];
