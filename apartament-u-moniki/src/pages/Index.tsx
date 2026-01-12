@@ -1,5 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import {
+  Wifi,
+  Tv,
+  Utensils,
+  Waves,
+  Wind,
+  Trees,
+  Car,
+  ShowerHead,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedBlocks from "@/components/AnimatedBlocks";
@@ -70,31 +80,38 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
-              "Bezpłatne Wi-Fi",
-              "Telewizor",
-              "Aneks kuchenny",
-              "Lodówka",
-              "Łazienka z prysznicem  ",
-              "Suszarka ",
-              "Ogród z miejscem na grilla  ",
-              "Parking",
-              "Jacuzzi/Balia z hydromasażem",
+              { icon: Wifi, label: "Bezpłatne Wi-Fi" },
+              { icon: Tv, label: "Telewizor Smart TV" },
+              { icon: Utensils, label: "W pełni wyposażona kuchnia" },
+              { icon: ShowerHead, label: "Prysznic z deszczownicą" },
+              { icon: Wind, label: "Suszarka do włosów" },
+              { icon: Trees, label: "Ogród z miejscem na grilla" },
+              { icon: Car, label: "Bezpłatny parking" },
+              { icon: Waves, label: "Jacuzzi / Balia" },
             ].map((item, index) => (
               <div
                 key={index}
-                className="flex items-center p-4 bg-beige-light rounded-lg shadow-sm"
+                className="flex flex-col items-center justify-center p-6 bg-white/40 backdrop-blur-sm border border-white/20 rounded-2xl shadow-sm transition-all duration-300"
               >
-                <div className="h-3 w-3 rounded-full bg-primary mr-3"></div>
-                <span>{item}</span>
+                <div className="p-3 bg-white/50 rounded-full mb-3">
+                  <item.icon className="h-6 w-6 text-primary/80" />
+                </div>
+                <span className="font-medium text-center text-foreground/90 text-sm md:text-base">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Button asChild>
-              <Link to="/gallery">Zobacz więcej</Link>
+          <div className="mt-16 text-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full px-8 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/gallery">Zobacz galerię zdjęć</Link>
             </Button>
           </div>
         </div>
