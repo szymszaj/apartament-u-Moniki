@@ -1,17 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, BookOpen, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { footerLinks } from "./links/links";
+import { navigationLinks } from "@/data/navData";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hoverPosition, setHoverPosition] = useState<number | null>(null);
-  const [hoverWidth, setHoverWidth] = useState<number>(0);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -40,118 +38,71 @@ const Navigation = () => {
     };
   }, [lastScrollY]);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMenuOpen]);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const isActivePath = (path: string) => {
     return location.pathname === path;
   };
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const target = e.currentTarget;
-    const rect = target.getBoundingClientRect();
-    const navRect = navRef.current?.getBoundingClientRect();
-
-    if (navRect) {
-      setHoverPosition(rect.left - navRect.left);
-      setHoverWidth(rect.width);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setHoverPosition(null);
-  };
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full bg-beige-light/80 backdrop-blur-sm z-50 shadow-sm transition-transform duration-300 ease-in-out",
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      )}
-    >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="text-2xl font-semibold tracking-tight z-10">
-          Apartament u Moniki
-        </Link>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ease-in-out px-4 py-2 md:py-3",
+          isVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0"
+        )}
+      >
+        <div className="w-full max-w-7xl bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-white/20 shadow-xl rounded-full px-6 py-2 flex items-center justify-between transition-all duration-300 hover:bg-white/80 hover:shadow-2xl hover:scale-[1.01]">
+          <Link
+            to="/"
+            className="text-xl md:text-2xl font-bold tracking-tight z-10 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          >
+            Apartament u Moniki
+          </Link>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </Button>
+          <div className="hidden md:flex items-center gap-1">
+            <nav className="flex items-center gap-6 bg-transparent px-2 py-1">
+              {navigationLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={cn(
+                    "relative text-base font-medium transition-colors duration-300 hover:text-primary group py-2",
+                    isActivePath(link.href)
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {link.label}
 
-        <div
-          ref={navRef}
-          className="hidden md:block relative"
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="absolute inset-0 bg-beige-dark/0 transition-all duration-300 rounded-full -z-10 group-hover:bg-beige-dark/80">
-            {hoverPosition !== null && (
-              <div
-                className="absolute top-1/2 -translate-y-1/2 h-10 bg-white rounded-full shadow-md transition-all duration-200 ease-out"
-                style={{
-                  left: `${hoverPosition}px`,
-                  width: `${hoverWidth}px`,
-                }}
-              />
-            )}
-          </div>
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary transition-all duration-300",
+                      isActivePath(link.href)
+                        ? "scale-100 opacity-100"
+                        : "scale-0 opacity-0 group-hover:scale-75 group-hover:opacity-100"
+                    )}
+                  />
+                </Link>
+              ))}
+            </nav>
 
-          <nav className="flex items-center gap-6 px-4 py-2 rounded-full group">
-            <Link
-              to="/"
-              className={cn(
-                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
-                isActivePath("/") && "text-foreground font-medium"
-              )}
-              onMouseEnter={handleMouseEnter}
-            >
-              Strona główna
-            </Link>
-            <Link
-              to="/gallery"
-              className={cn(
-                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
-                isActivePath("/gallery") && "text-foreground font-medium"
-              )}
-              onMouseEnter={handleMouseEnter}
-            >
-              Galeria
-            </Link>
-            <Link
-              to="/Description"
-              className={cn(
-                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
-                isActivePath("/Description") && "text-foreground font-medium"
-              )}
-              onMouseEnter={handleMouseEnter}
-            >
-              Opis
-            </Link>
-            <Link
-              to="/contact"
-              className={cn(
-                "text-muted-foreground hover:text-foreground transition-colors py-1.5 px-3 rounded-full relative z-10",
-                isActivePath("/contact") && "text-foreground font-medium"
-              )}
-              onMouseEnter={handleMouseEnter}
-            >
-              Kontakt
-            </Link>
-
-            <div className="flex items-center gap-2 ml-4">
+            <div className="flex items-center gap-2 ml-4 border-l border-gray-200 pl-4 py-1">
               <a
                 href={footerLinks.social.instagram.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full hover:text-foreground transition-all relative z-10"
-                onMouseEnter={handleMouseEnter}
+                className="p-2 rounded-full hover:bg-pink-50 hover:text-pink-600 transition-all duration-300 hover:scale-110"
               >
                 <Instagram size={20} />
               </a>
@@ -159,79 +110,107 @@ const Navigation = () => {
                 href={footerLinks.social.booking.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full hover:text-foreground transition-all relative z-10"
-                onMouseEnter={handleMouseEnter}
+                className="p-2 rounded-full hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 hover:scale-110"
               >
                 <BookOpen size={20} />
               </a>
             </div>
-          </nav>
-        </div>
-      </div>
+          </div>
 
-      {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-beige-light z-40 animate-fade-in ">
-          <nav className="flex flex-col p-6 space-y-6 bg-beige-light z-[100]">
-            <Link
-              to="/"
-              className={cn("text-xl py-2", isActivePath("/") && "font-medium")}
-              onClick={toggleMenu}
-            >
-              Strona główna
-            </Link>
-            <Link
-              to="/gallery"
-              className={cn(
-                "text-xl py-2",
-                isActivePath("/gallery") && "font-medium"
-              )}
-              onClick={toggleMenu}
-            >
-              Galeria
-            </Link>
-            <Link
-              to="/Description"
-              className={cn(
-                "text-xl py-2",
-                isActivePath("/Description") && "font-medium"
-              )}
-              onClick={toggleMenu}
-            >
-              Opis
-            </Link>
-            <Link
-              to="/contact"
-              className={cn(
-                "text-xl py-2",
-                isActivePath("/contact") && "font-medium"
-              )}
-              onClick={toggleMenu}
-            >
-              Kontakt
-            </Link>
-
-            <div className="flex items-center gap-4 pt-4">
-              <a
-                href={footerLinks.social.instagram.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-beige rounded-full"
-              >
-                <Instagram size={24} />
-              </a>
-              <a
-                href={footerLinks.social.booking.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-beige rounded-full"
-              >
-                <BookOpen size={24} />
-              </a>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden relative z-50 hover:bg-transparent"
+            onClick={toggleMenu}
+          >
+            <div className="flex flex-col gap-1.5 items-end justify-center w-6 h-6">
+              <span
+                className={cn(
+                  "w-6 h-0.5 bg-foreground transition-all duration-300 block",
+                  isMenuOpen ? "-rotate-45 -translate-y-[2px]" : "translate-y-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-6 h-0.5 bg-foreground transition-all duration-300 block",
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-4 h-0.5 bg-foreground transition-all duration-300 block",
+                  isMenuOpen
+                    ? "w-6 rotate-45 -translate-y-[10px]"
+                    : "translate-y-0"
+                )}
+              />
             </div>
-          </nav>
+          </Button>
         </div>
-      )}
-    </header>
+      </header>
+
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-background/95 backdrop-blur-[20px] md:hidden transition-all duration-500 flex flex-col items-start justify-center pl-10",
+          isMenuOpen
+            ? "translate-y-0 opacity-100 visible"
+            : "-translate-y-full opacity-0 invisible"
+        )}
+      >
+        <nav className="flex flex-col items-start gap-8 w-full max-w-sm">
+          {navigationLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className={cn(
+                "text-4xl font-light tracking-tight transition-all duration-300 hover:translate-x-4 hover:text-primary hover:font-medium flex items-center gap-4 group",
+                isActivePath(link.href)
+                  ? "text-primary font-medium translate-x-4"
+                  : "text-muted-foreground"
+              )}
+              onClick={toggleMenu}
+            >
+              <span
+                className={cn(
+                  "w-3 h-3 rounded-full bg-primary transition-all duration-300",
+                  isActivePath(link.href)
+                    ? "scale-100"
+                    : "scale-0 group-hover:scale-100"
+                )}
+              />
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="w-16 h-[1px] bg-border my-4 ml-7" />
+
+          <div className="flex items-center gap-8 ml-7">
+            <a
+              href={footerLinks.social.instagram.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 bg-white shadow-lg rounded-2xl hover:bg-pink-50 hover:text-pink-600 hover:scale-110 hover:shadow-xl transition-all duration-300 group"
+            >
+              <Instagram
+                size={28}
+                className="transition-transform group-hover:rotate-12"
+              />
+            </a>
+            <a
+              href={footerLinks.social.booking.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 bg-white shadow-lg rounded-2xl hover:bg-blue-50 hover:text-blue-600 hover:scale-110 hover:shadow-xl transition-all duration-300 group"
+            >
+              <BookOpen
+                size={28}
+                className="transition-transform group-hover:-rotate-12"
+              />
+            </a>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 };
 
