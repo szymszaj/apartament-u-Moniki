@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useParallaxMouseEffect } from "../hooks/useParallaxMouseEffect";
 
 const AnimatedBlocks = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,41 +11,12 @@ const AnimatedBlocks = () => {
     "/img/salon2.jpg",
   ];
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-
-      const container = containerRef.current;
-      const blocks = container.querySelectorAll(".animated-block");
-
-      const containerRect = container.getBoundingClientRect();
-      const containerCenterX = containerRect.left + containerRect.width / 2;
-      const containerCenterY = containerRect.top + containerRect.height / 2;
-
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-
-      const moveX = (mouseX - containerCenterX) / 50;
-      const moveY = (mouseY - containerCenterY) / 50;
-
-      blocks.forEach((block, index) => {
-        const htmlBlock = block as HTMLElement;
-        const factor = index % 2 === 0 ? 1 : -1;
-
-        htmlBlock.style.transform = `
-          translateX(${moveX * factor}px) 
-          translateY(${moveY * factor}px) 
-          translateZ(${10 + index * 5}px)
-        `;
-      });
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  useParallaxMouseEffect({
+    containerRef,
+    blockSelector: ".animated-block",
+    sensitivity: 50,
+    depthMultiplier: 5,
+  });
 
   return (
     <div className="relative block-animation-container" ref={containerRef}>
