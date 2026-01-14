@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://apartament-u-moniki.vercel.app/</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/link1.png</image:loc>
+      <image:title>Apartament u Moniki - strona główna</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://apartament-u-moniki.vercel.app/description</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/salon4.jpg</image:loc>
+      <image:title>Opis i wyposażenie apartamentu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/jacuzzi.jpg</image:loc>
+      <image:title>Ogród z jacuzzi i grillem</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://apartament-u-moniki.vercel.app/gallery</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/salon4.jpg</image:loc>
+      <image:title>Salon apartamentu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/sypialnia.jpg</image:loc>
+      <image:title>Sypialnia apartamentu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/kuchnia1.jpg</image:loc>
+      <image:title>Kuchnia apartamentu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://apartament-u-moniki.vercel.app/img/ogrod3.jpg</image:loc>
+      <image:title>Ogród z grillem</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://apartament-u-moniki.vercel.app/contact</loc>
-    <lastmod>2025-11-06</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>
