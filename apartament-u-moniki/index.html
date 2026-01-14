@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3b4a4f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Primary Meta Tags -->
     <title>
       Apartament u Moniki - Wynajem w Szaflarach blisko Zakopanego | Termy |
       Stoki narciarskie
@@ -13,10 +18,12 @@
     />
     <meta
       name="keywords"
-      content="apartament szaflary, wynajem zakopane, termy szaflary, apartament tatry, noclegi podhale, apartament z ogrodem, wynajem górami, noclegi szaflary"
+      content="apartament szaflary, wynajem zakopane, termy szaflary, apartament tatry, noclegi podhale, apartament z ogrodem, wynajem górami, noclegi szaflary, wakacje tatry"
     />
     <meta name="author" content="Apartament u Moniki" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="pl" />
     <link rel="canonical" href="https://apartament-u-moniki.vercel.app/" />
 
     <!-- Open Graph / Facebook -->
@@ -34,6 +41,8 @@
       property="og:image"
       content="https://apartament-u-moniki.vercel.app/img/link1.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:site_name" content="Apartament u Moniki" />
 
@@ -56,13 +65,22 @@
       content="https://apartament-u-moniki.vercel.app/img/link1.png"
     />
 
+    <!-- Performance & DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cf.bstatic.com" />
+    <link rel="preconnect" href="https://cdn.gpteng.co" />
+    
+    <!-- Alternate Language Links -->
+    <link rel="alternate" hreflang="pl" href="https://apartament-u-moniki.vercel.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://apartament-u-moniki.vercel.app/" />
+
     <!-- Local Business Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LodgingBusiness",
         "name": "Apartament u Moniki",
-        "description": "Komfortowy apartament w Szaflarach dla maksymalnie 5 osób. Idealna lokalizacja blisko Term Szaflary i stoków narciarskich.",
+        "description": "Komfortowy apartament w Szaflarach dla maksymalnie 5 osób. Idealna lokalizacja blisko Term Szaflary, ośrodków narciarskich i stoków.",
         "url": "https://apartament-u-moniki.vercel.app",
         "telephone": "+48-504-808-290",
         "email": "apartament45f@gmail.com",
@@ -78,33 +96,171 @@
           "latitude": "49.5075",
           "longitude": "19.9789"
         },
+        "image": "https://apartament-u-moniki.vercel.app/img/link1.png",
+        "priceRange": "$$",
         "amenityFeature": [
           {
             "@type": "LocationFeatureSpecification",
-            "name": "Free parking"
+            "name": "Free parking",
+            "description": "Bezpłatny parking na terenie"
           },
           {
             "@type": "LocationFeatureSpecification",
-            "name": "Free WiFi"
+            "name": "Free WiFi",
+            "description": "Szybki internet w całym apartamencie"
           },
           {
             "@type": "LocationFeatureSpecification",
-            "name": "Garden"
+            "name": "Garden",
+            "description": "Prywatny ogród z grilem i jacuzzi"
           },
           {
             "@type": "LocationFeatureSpecification",
-            "name": "Pet-friendly"
+            "name": "Pet-friendly",
+            "description": "Zwierzęta mile widziane"
           },
           {
             "@type": "LocationFeatureSpecification",
-            "name": "Kitchen"
+            "name": "Kitchen",
+            "description": "W pełni wyposażona nowoczesna kuchnia"
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Bedrooms",
+            "description": "2 komfortowe sypialnie"
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Modern bathroom",
+            "description": "Nowoczesna łazienka z prysznicem"
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Smart TV",
+            "description": "Telewizor Smart TV w salonie"
           }
         ],
         "starRating": {
           "@type": "Rating",
-          "ratingValue": "9.2"
+          "ratingValue": "9.2",
+          "ratingCount": "15"
         },
-        "priceRange": "$$"
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "9.2",
+          "ratingCount": "15",
+          "bestRating": "10",
+          "worstRating": "1"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Termy Szaflary",
+            "distance": "2 km"
+          },
+          {
+            "@type": "Place",
+            "name": "Kotelnica Białczańska",
+            "distance": "12 km"
+          },
+          {
+            "@type": "Place",
+            "name": "Zakopane",
+            "distance": "20 km"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Apartament u Moniki",
+        "url": "https://apartament-u-moniki.vercel.app",
+        "logo": "https://apartament-u-moniki.vercel.app/img/link1.png",
+        "image": "https://apartament-u-moniki.vercel.app/img/salon4.jpg",
+        "description": "Komfortowy apartament do wynajęcia w Szaflarach blisko Zakopanego i Term Szaflary",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Szaflary 777",
+          "addressLocality": "Szaflary",
+          "postalCode": "34-460",
+          "addressCountry": "PL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Reservation",
+          "telephone": "+48-504-808-290",
+          "email": "apartament45f@gmail.com"
+        },
+        "sameAs": [
+          "https://www.instagram.com",
+          "https://www.booking.com"
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Strona główna",
+            "item": "https://apartament-u-moniki.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Opis apartamentu",
+            "item": "https://apartament-u-moniki.vercel.app/description"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Galeria",
+            "item": "https://apartament-u-moniki.vercel.app/gallery"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Kontakt",
+            "item": "https://apartament-u-moniki.vercel.app/contact"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Product/Room Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Apartament u Moniki",
+        "description": "Komfortowy apartament dla 5 osób w Szaflarach. 65 m², 2 sypialnie, nowoczesna łazienka, pełna kuchnia, prywatny ogród.",
+        "image": "https://apartament-u-moniki.vercel.app/img/link1.png",
+        "brand": {
+          "@type": "Brand",
+          "name": "Apartament u Moniki"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "250",
+          "priceCurrency": "PLN",
+          "availability": "InStock",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://apartament-u-moniki.vercel.app",
+          "seller": {
+            "@type": "Organization",
+            "name": "Apartament u Moniki",
+            "url": "https://apartament-u-moniki.vercel.app"
+          }
+        }
       }
     </script>
   </head>
