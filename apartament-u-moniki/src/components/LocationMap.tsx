@@ -39,7 +39,7 @@ const LocationMap = () => {
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
           subdomains: "abcd",
           maxZoom: 20,
-        }
+        },
       ).addTo(map);
 
       const customIcon = L.divIcon({
@@ -57,13 +57,20 @@ const LocationMap = () => {
           `<div class="font-sans text-sm p-1">
             <strong class="text-base text-primary">Apartament u Moniki</strong><br/>
             Zapraszamy!
-           </div>`
+           </div>`,
         )
         .openPopup();
 
       L.control.zoom({ position: "topright" }).addTo(map);
     }
   }, []);
+
+  const handleNavigate = () => {
+    const mapUrl = import.meta.env.VITE_GOOGLE_MAPS_LINK;
+    if (mapUrl) {
+      window.open(mapUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <section className="relative w-full h-[500px] md:h-[600px] flex items-end md:items-center overflow-hidden z-0 bg-beige-light">
@@ -77,7 +84,7 @@ const LocationMap = () => {
         <div
           className={cn(
             "bg-white/90 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-3xl shadow-2xl max-w-md pointer-events-auto transition-all duration-300",
-            !isExpanded ? "md:scale-[1.02]" : ""
+            !isExpanded ? "md:scale-[1.02]" : "",
           )}
         >
           <button
@@ -97,7 +104,7 @@ const LocationMap = () => {
             <div
               className={cn(
                 "p-2 bg-primary/10 rounded-full md:hidden transition-transform duration-300",
-                isExpanded ? "rotate-180" : "rotate-0"
+                isExpanded ? "rotate-180" : "rotate-0",
               )}
             >
               <ChevronDown className="h-5 w-5 text-primary" />
@@ -113,7 +120,7 @@ const LocationMap = () => {
               "grid transition-[grid-template-rows] duration-300 ease-out",
               isExpanded
                 ? "grid-rows-[1fr] mt-6"
-                : "grid-rows-[0fr] md:grid-rows-[1fr] md:mt-6"
+                : "grid-rows-[0fr] md:grid-rows-[1fr] md:mt-6",
             )}
           >
             <div className="overflow-hidden">
@@ -153,15 +160,13 @@ const LocationMap = () => {
                   </div>
                 </div>
 
-                <a
-                  href={import.meta.env.VITE_GOOGLE_MAPS_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={handleNavigate}
                   className="inline-flex items-center justify-center w-full bg-primary text-white font-medium py-3 px-6 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 hover:shadow-xl transition-all duration-300 group mt-2"
                 >
                   <NavIcon className="w-4 h-4 mr-2 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   Nawiguj
-                </a>
+                </button>
               </div>
             </div>
           </div>
