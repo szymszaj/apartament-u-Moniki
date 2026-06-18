@@ -143,7 +143,7 @@ const Description = () => {
           <section className="mb-16 animate-fade-in-up">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <img
-                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/628159546.jpg?k=c98b642e5eea6d09282a179664f7bffc61e821346f4f154352344727ef56eca6&o=&hp=1"
+                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/829562674.jpg?k=d100a150ed8fe92f64ba86bef27d34b571fcde87b84c5d346b84619451c3eb86&o="
                 alt="Apartament u Moniki"
                 className="rounded-2xl shadow-lg object-cover w-full h-[320px]"
               />
