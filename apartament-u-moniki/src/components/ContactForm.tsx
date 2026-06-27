@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { initEmailJS, sendEmail } from "@/lib/emailjs";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 import { footerLinks } from "@/components/links/links";
 
 interface ContactFormProps {
@@ -83,7 +84,7 @@ const ContactForm = ({ onSuccess, className }: ContactFormProps) => {
           htmlFor="name"
           className="block text-sm font-semibold text-foreground"
         >
-          Imię i nazwisko *
+          Imię *
         </label>
         <Input
           id="name"
@@ -91,7 +92,7 @@ const ContactForm = ({ onSuccess, className }: ContactFormProps) => {
           value={formData.name}
           onChange={handleChange}
           required
-          placeholder="Jan Kowalski"
+          placeholder="Jan"
           className="h-12 bg-beige-light/50 border-beige-dark/20 focus:border-primary focus:ring-primary transition-all"
         />
       </div>
@@ -136,6 +137,18 @@ const ContactForm = ({ onSuccess, className }: ContactFormProps) => {
         />
         <p className="text-xs text-muted-foreground">* Pola wymagane</p>
       </div>
+
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        Wysyłając formularz, akceptujesz przetwarzanie Twoich danych w celu
+        udzielenia odpowiedzi na zapytanie. Więcej informacji znajdziesz w{" "}
+        <Link
+          to="/polityka-prywatnosci"
+          className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+        >
+          Polityce Prywatności
+        </Link>
+        .
+      </p>
 
       <Button
         type="submit"

@@ -100,6 +100,13 @@ const Footer = () => {
             <span className="text-sm">{footerLinks.contact.address}</span>
           </div>
 
+          <Link
+            to="/polityka-prywatnosci"
+            className="text-xs text-muted-foreground/80 hover:text-primary transition-colors underline underline-offset-2"
+          >
+            Polityka Prywatności
+          </Link>
+
           <div className="text-xs text-muted-foreground/60 pt-4">
             &copy; {currentYear} Apartament u Moniki. Wszelkie prawa
             zastrzeżone.

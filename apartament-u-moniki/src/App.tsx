@@ -8,6 +8,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Description from "./pages/Description";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FloatingContactButton from "./components/FloatingContactButton";
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/description" element={<Description />} />
+          <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
