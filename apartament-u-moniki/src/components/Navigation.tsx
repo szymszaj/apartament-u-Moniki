@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useLenis } from "lenis/react";
 import { Instagram, BookOpen, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,7 @@ const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,10 +43,12 @@ const Navigation = () => {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
+      lenis?.stop();
     } else {
       document.body.style.overflow = "unset";
+      lenis?.start();
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, lenis]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
