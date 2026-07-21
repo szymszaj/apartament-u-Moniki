@@ -14,7 +14,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedBlocks from "@/components/AnimatedBlocks";
 import LocationMap from "@/components/LocationMap";
-import { footerLinks } from "@/components/links/links";
 import HeroSlider from "@/components/HeroSlider/HeroSlider";
 
 const Index = () => {
